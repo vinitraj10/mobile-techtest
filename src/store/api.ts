@@ -21,6 +21,6 @@ const errors = {
             } catch {
                 reject(errors.FETCH_ISSUE_ERROR);
             }
-        }, 30000)
+        }, 3000)
     })
 }

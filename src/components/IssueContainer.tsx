@@ -17,10 +17,12 @@ const Issues = (props: IssueContainerProps) => {
         return (
             <View style={{ flexDirection: 'row', margin: 16, padding: 16, borderWidth: 1, borderRadius: 5, borderColor: '#ddd' }}>
                 <Text style={{flex:1}}>{item.issue}</Text>
-                <Image source={{ uri: item.uri }} style={{
-    width: 50,
-    height: 50,
-  }}/>
+                <Image 
+                    source={{ uri: item.uri }} 
+                    style={{
+                        width: 50,
+                        height: 50,
+                }}/>
             </View>
         )
     }
@@ -36,6 +38,7 @@ const Issues = (props: IssueContainerProps) => {
             renderItem={renderIssueItem} 
             showsHorizontalScrollIndicator={false} 
             showsVerticalScrollIndicator={false}
+            ListEmptyComponent={() => <Text>No data available Please Tweak Filters</Text>}
             ListFooterComponent={FootNote} 
         />
     );
