@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ActivityIndicatorProps } from 'react-native';
-import { ActivityIndicator, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import styles from './styles/Loader.style';
 
 const Loader = (props: ActivityIndicatorProps) => {
     return (
@@ -9,13 +10,5 @@ const Loader = (props: ActivityIndicatorProps) => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    loaderContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
 
 export default Loader;

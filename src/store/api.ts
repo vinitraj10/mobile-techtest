@@ -13,9 +13,10 @@ const errors = {
 export const fetchIssues = () => {
     return new Promise<IssueData>((resolve, reject) => {
         setTimeout(() => {
-            try {
-                resolve(require('./data.json'));
-            } catch {
+            const data = require('./data.json');
+            if (data !== undefined && data.issues) {
+                resolve(data);
+            } else {
                 reject(errors.FETCH_ISSUE_ERROR);
             }
         }, 1000);

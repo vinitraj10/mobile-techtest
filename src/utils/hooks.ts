@@ -53,11 +53,25 @@ export const useApiData = <T>(api: () => Promise<T>) => {
                 setError(e);
                 setIsLoading(false);
             });
-    }, []);
+    }, [api]);
 
     return {
         isLoading,
         error,
         data,
     };
+};
+
+export const useRowItemCount = () => {
+    const orientation = useOrientation();
+    const [rowItem, setRowItem] = useState(0);
+    useEffect(() => {
+        if (orientation === ORIENTATION.LANDSCAPE) {
+            setRowItem(2);
+        } else {
+            setRowItem(1);
+        }
+    }, [orientation]);
+
+    return rowItem;
 };

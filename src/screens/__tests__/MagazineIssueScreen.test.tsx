@@ -13,7 +13,7 @@ describe('Magazine Issue Screen test', () => {
                     {
                         issue: 'September 2022',
                         uri: 'mock uri',
-                        cover: 'mock cover',
+                        cover: 'Which? Computing',
                     },
                 ],
             },
@@ -32,8 +32,8 @@ describe('Magazine Issue Screen test', () => {
             error: undefined,
         });
         const { getByTestId } = render(<MagazineIssueScreen />);
-        fireEvent(getByTestId('ToggleSeptember 2022'), 'press');
-        expect(getByTestId('ToggleSeptember 2022').props.style.backgroundColor).toEqual('white');
+        fireEvent(getByTestId('ToggleComputing'), 'press');
+        expect(getByTestId('ToggleComputing').props.style.backgroundColor).toEqual('white');
     });
 
     it('Apply toggle should change color to green of the toggle button', () => {
@@ -45,9 +45,9 @@ describe('Magazine Issue Screen test', () => {
         });
         const { getByTestId } = render(<MagazineIssueScreen />);
         // to test apply toggle, deselecting the toggle initially
-        fireEvent(getByTestId('ToggleSeptember 2022'), 'press');
-        fireEvent(getByTestId('ToggleSeptember 2022'), 'press');
-        expect(getByTestId('ToggleSeptember 2022').props.style.backgroundColor).toEqual('green');
+        fireEvent(getByTestId('ToggleGardening'), 'press');
+        fireEvent(getByTestId('ToggleGardening'), 'press');
+        expect(getByTestId('ToggleGardening').props.style.backgroundColor).toEqual('green');
     });
 
     it('Issue container list should be empty if data is not returned from API', () => {

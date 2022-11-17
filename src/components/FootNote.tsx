@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Linking } from 'react-native';
+import { View, Text, Linking } from 'react-native';
+import { WHICH_JOIN_URL } from '../utils';
+import styles from './styles/FootNote.style';
 
-const WHICH_JOIN_URL = `https://join.which.co.uk/join/subscribe?gclid=Cj0KCQiA1NebBhDDARIsAANiDD1GNh1dG1rSQ4u4qHuLU5gyb2581nH7hTl921YX6WLBBaORMVH5PdkaAhXwEALw_wcB&gclsrc=aw.ds&source_code=911CUJ`;
 const FootNote = () => {
     const onWhichClick = () => {
         Linking.openURL(WHICH_JOIN_URL);
@@ -20,17 +21,4 @@ const FootNote = () => {
     );
 };
 
-const styles = StyleSheet.create({
-    footer: {
-        backgroundColor: '#ddd',
-        padding: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    whichLink: {
-        color: 'blue',
-        fontWeight: '800',
-    },
-});
-
-export default FootNote;
+export default React.memo(FootNote);

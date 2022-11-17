@@ -7,3 +7,8 @@ export type Issue = {
 export type IssueData = {
     issues: Array<Issue>;
 };
+
+export type FilterItem = {
+    id: string;
+    label: string;
+};

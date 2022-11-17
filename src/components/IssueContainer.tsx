@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import type { ViewStyle } from 'react-native';
+import React from 'react';
 import type { Issue } from '../store/types';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
-import FootNote from './FootNote';
-import { ORIENTATION, useOrientation } from '../utils';
-import AppStyles from '../../App.styles';
+import { Text, FlatList } from 'react-native';
+import { useRowItemCount } from '../utils';
 import Loader from './Loader';
+import IssueItem from './IssueItem';
 
 type IssueContainerProps = {
     issues?: Array<Issue>;
@@ -13,43 +11,9 @@ type IssueContainerProps = {
     error?: string;
 };
 
-const styles = StyleSheet.create({
-    issueContainer: {
-        margin: 16,
-        padding: 16,
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#ddd',
-    },
-
-    issueImage: {
-        width: 100,
-        height: 100,
-    },
-});
 const Issues = (props: IssueContainerProps) => {
     const { error, isLoading, issues } = props;
-    const orientation = useOrientation();
-    const [rowItem, setRowItem] = useState(1);
-
-    useEffect(() => {
-        if (orientation === ORIENTATION.LANDSCAPE) {
-            setRowItem(2);
-        } else {
-            setRowItem(1);
-        }
-    }, [orientation]);
-
-    const renderIssueItem = ({ item }: { item: Issue }) => {
-        const direction: ViewStyle = rowItem > 1 ? { flexDirection: 'column' } : { flexDirection: 'row' };
-        return (
-            <View style={[styles.issueContainer, direction]}>
-                <Text style={AppStyles.flexOne}>{item.issue}</Text>
-                <Image source={{ uri: item.uri }} style={styles.issueImage} />
-            </View>
-        );
-    };
-
+    const rowItem = useRowItemCount();
     if (isLoading) {
         return <Loader />;
     } else if (error) {
@@ -58,7 +22,7 @@ const Issues = (props: IssueContainerProps) => {
     return (
         <FlatList
             data={issues}
-            renderItem={renderIssueItem}
+            renderItem={({ item }) => <IssueItem {...item} />}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={() => <Text>No data available Please Tweak Filters</Text>}
@@ -69,4 +33,4 @@ const Issues = (props: IssueContainerProps) => {
     );
 };
 
-export default Issues;
+export default React.memo(Issues);
