@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
-import { FootNote } from '.';
+import FootNote from './FootNote';
 import { Issue } from '../store/types';
+import { ORIENTATION, useOrientation } from '../utils';
 import Loader from './Loader';
 
 
@@ -13,9 +14,19 @@ interface IssueContainerProps {
 }
 const Issues = (props: IssueContainerProps) => {
     const { error, isLoading, issues } = props;
+    const orientation = useOrientation();
+    const [rowItem, setRowItem] = useState(1);
+    useEffect(() => {
+        if (orientation === ORIENTATION.LANDSCAPE) {
+            setRowItem(2)
+        } else {
+            setRowItem(1)
+        }
+    },[orientation])
     const renderIssueItem = ({ item }: { item: Issue }) => {
+        const flexDirection = rowItem > 1 ? 'column': 'row'
         return (
-            <View style={{ flexDirection: 'row', margin: 16, padding: 16, borderWidth: 1, borderRadius: 5, borderColor: '#ddd' }}>
+            <View style={{ flexDirection, margin: 16, padding: 16, borderWidth: 1, borderRadius: 5, borderColor: '#ddd' }}>
                 <Text style={{flex:1}}>{item.issue}</Text>
                 <Image 
                     source={{ uri: item.uri }} 
@@ -39,7 +50,9 @@ const Issues = (props: IssueContainerProps) => {
             showsHorizontalScrollIndicator={false} 
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={() => <Text>No data available Please Tweak Filters</Text>}
-            ListFooterComponent={FootNote} 
+            ListFooterComponent={FootNote}
+            key={rowItem}
+            numColumns={rowItem}
         />
     );
 }

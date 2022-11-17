@@ -6,8 +6,6 @@ const errors = {
     FETCH_ISSUE_ERROR: 'Error occurred while parsing data'
 }
 
-
-
 /**
  * @description Wraps issue data with mock promise to give a feel of an
  * API call in the UI with inferred data type of mock data.

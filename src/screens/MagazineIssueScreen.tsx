@@ -3,7 +3,7 @@ import { FlatList, SafeAreaView, View } from 'react-native';
 import { IssueContainer, Heading, Toggle } from '../components';
 import { fetchIssues } from '../store';
 import { useApiData } from '../utils';
-import { IssueData } from '../store/types';
+import { IssueData } from '../store';
 
 interface MagazineIssueScreenProps {}
 
@@ -14,6 +14,7 @@ const MagazineIssueScreen = (props: MagazineIssueScreenProps) => {
     const { data, error, isLoading } = useApiData<IssueData>(fetchIssues);
     const [filters, setFilters] = useState<string[]>(toggleList);
     const [filteredIssues, setFilteredIssues] = useState(data?.issues);
+
 
     useEffect(() => {        
         if (data !== undefined) {

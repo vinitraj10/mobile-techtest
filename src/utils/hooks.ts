@@ -18,7 +18,7 @@ export enum ORIENTATION {
 export function useOrientation() {
     const [orientation, setOrientation] = useState(ORIENTATION.PORTRAIT);
     useEffect(() => {
-        Dimensions.addEventListener('change', ({ window: { width, height } }) => {
+        const listener = Dimensions.addEventListener('change', ({ window: { width, height } }) => {
             if (width < height) {
                 setOrientation(ORIENTATION.PORTRAIT)
             } else {
@@ -26,12 +26,12 @@ export function useOrientation() {
 
             }
         })
+        // call remove listener as soon as it un-mounts
+        return listener.remove;
 
     }, []);
     return orientation;
 }
-
-
 
 /**
  * 
