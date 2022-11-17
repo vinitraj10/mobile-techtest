@@ -39,7 +39,7 @@ export function useOrientation() {
  */
 export const useApiData = <T>(api: () => Promise<T>) => {
     const [data, setData] = useState<T>();
-    const [error, setError] = useState();
+    const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
