@@ -40,9 +40,10 @@ Run your jest tests:
 
 ## App Demo
 
-| Filters applied    | Loading State | No filters |
-| --------- | ----------- | ----------- |
-| <img src="screenshots/1.png?raw=true" width="270">    | <img src="screenshots/2.png?raw=true" width="270">|   <img src="screenshots/3.png?raw=true" width="270">
+| Filters applied                                    | Loading State                                      | No filters                                         |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| <img src="screenshots/1.png?raw=true" width="270"> | <img src="screenshots/2.png?raw=true" width="270"> | <img src="screenshots/3.png?raw=true" width="270"> |
 
 ## Improvements
+
 I have listed down the possible improvements which can be done in this project [here](https://github.com/vinitraj10/mobile-techtest/wiki/Improvements)

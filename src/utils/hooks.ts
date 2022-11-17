@@ -34,8 +34,9 @@ export function useOrientation() {
 /**
  *
  * @param api
- * @returns common data structure with common API tracker fields like loading, error
- * to serve better UI experience to users
+ * @description Takes an API call and returns the common data structure with fields
+ * like loading, error and data which is important for any API call to have better
+ * user experience
  */
 export const useApiData = <T>(api: () => Promise<T>) => {
     const [data, setData] = useState<T>();
@@ -62,6 +63,13 @@ export const useApiData = <T>(api: () => Promise<T>) => {
     };
 };
 
+/**
+ * @description custom hook to determine row item,by calling
+ * another hook `useOrientation` which listens orientation changes of device,
+ * this can be further modified depending on the use case of various device size
+ * like tablets or smaller device
+ * @returns count of rowItem based on the orientation
+ */
 export const useRowItemCount = () => {
     const orientation = useOrientation();
     const [rowItem, setRowItem] = useState(0);
