@@ -4,7 +4,13 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         marginTop: 60,
-        paddingHorizontal: 24,
+    },
+    flexOne: {
+        flex: 1,
+    },
+    contentContainer: {
+        flex: 1,
+        marginHorizontal: 8,
     },
     title: {
         fontSize: 24,

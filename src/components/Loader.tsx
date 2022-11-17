@@ -1,13 +1,21 @@
 import React from 'react';
-import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
+import type { ActivityIndicatorProps } from 'react-native';
+import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
-
-interface LoaderProps extends ActivityIndicatorProps {};
-
-const Loader = (props: LoaderProps) => {
+const Loader = (props: ActivityIndicatorProps) => {
     return (
-        <ActivityIndicator {...props} />
+        <View style={styles.loaderContainer}>
+            <ActivityIndicator {...props} />
+        </View>
     );
-}
+};
+
+const styles = StyleSheet.create({
+    loaderContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+});
 
 export default Loader;
