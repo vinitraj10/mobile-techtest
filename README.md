@@ -1,19 +1,5 @@
 # Mobile tech test
 
-## Getting started
-
-This is a React Native project.
-
-Building on iOS requires a macOS development environment.
-
-If you do not own a MacBook that is completely fine. However, this means that you will only be able to build on android. Please let us know - we will ensure to only review your test using an android simulator.
-
-If you have not set up a React Native development environment before on your machine, please follow the instructions for 'React Native Cli Quickstart': https://reactnative.dev/docs/environment-setup
-
-Note: Xcode is a 12.6 GB download, and Android Studio is 1 GB, so this may take a while to install.
-
-We recommend using Ruby 3.0.1 and JDK 11, or newer.
-
 ### Running this project
 
 Download and install all necessary packages:
