@@ -6,14 +6,14 @@ const errors = {
 };
 
 /**
- * @description Wraps issue data with mock promise to give a feel of an
- * API call in the UI with inferred data type of mock data.
+ * @description Wraps issue data with mock promise to give a feel of
+ *  an API call in the UI with inferred data type of mock data.
  * @returns promise to resolve the data return from json file
  */
 export const fetchIssues = () => {
     return new Promise<IssueData>((resolve, reject) => {
         setTimeout(() => {
-            const data = require('./data.json');
+            const data = require('./fixtures/data.json');
             if (data !== undefined && data.issues) {
                 resolve(data);
             } else {

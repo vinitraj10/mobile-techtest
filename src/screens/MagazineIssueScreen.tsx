@@ -48,7 +48,7 @@ const MagazineIssueScreen = () => {
     };
 
     return (
-        <SafeAreaView style={styles.flexOne}>
+        <SafeAreaView style={styles.flexOne} testID="MagazineIssueContainer">
             <View style={styles.contentContainer}>
                 <Heading size={24}>Magazine issues</Heading>
                 <ToggleContainer filters={filters} addToFilter={addToFilter} removeFromFilter={removeFromFilter} />
